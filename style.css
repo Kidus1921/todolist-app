@@ -1,3 +1,4 @@
+/* Base Reset */
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +6,7 @@
     box-sizing: border-box;
 }
 
+/* Body Styles */
 body {
     background: linear-gradient(135deg, #3a3d98, #843b88);
     min-height: 100vh;
@@ -14,10 +16,12 @@ body {
     padding: 20px;
 }
 
+/* Container */
 .container {
     width: 100%;
 }
 
+/* Todo App Wrapper */
 .todo-app {
     width: 100%;
     max-width: 540px;
@@ -29,11 +33,13 @@ body {
     animation: fadeIn 0.6s ease-in-out;
 }
 
+/* Fade-in Animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
 
+/* Title */
 .todo-app h2 {
     color: #2c3e50;
     display: flex;
@@ -48,6 +54,7 @@ body {
     margin-left: 12px;
 }
 
+/* Input Row */
 .row {
     display: flex;
     align-items: center;
@@ -85,6 +92,27 @@ button:hover {
     background: #e04735;
 }
 
+/* Sort Icons */
+.sort-icons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: -20px;
+    margin-right: 20px;
+    transform: translateY(-40px);
+}
+
+.sort-icons img {
+    width: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.sort-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Task List */
 ul {
     padding: 0;
 }
@@ -92,19 +120,18 @@ ul {
 ul li {
     list-style: none;
     font-size: 18px;
-    padding: 14px 8px 14px 50px;
+    padding: 14px 8px 24px 50px;
     user-select: none;
     cursor: pointer;
     position: relative;
     transition: background 0.2s ease;
     border-radius: 8px;
     margin-bottom: 10px;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-ul li:hover {
-    background: #f9f9f9;
-}
-
+/* Checkbox Icons */
 ul li::before {
     content: '';
     position: absolute;
@@ -119,6 +146,7 @@ ul li::before {
     transform: translateY(-50%);
 }
 
+/* Checked Tasks */
 ul li.checked {
     color: #7f8c8d;
     text-decoration: line-through;
@@ -128,6 +156,7 @@ ul li.checked::before {
     background-image: url('images/check.png');
 }
 
+/* Delete Button */
 ul li span {
     position: absolute;
     right: 12px;
@@ -147,7 +176,49 @@ ul li span:hover {
     background: #f0f0f0;
 }
 
-/* 🔽 Mobile View Fix */
+/* Timestamp and Content */
+.task-content {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.timestamp {
+    font-size: 12px;
+    color: #888;
+    position: absolute;
+    left: 50px;
+    bottom: 8px;
+}
+
+/* Drag and Drop */
+ul#list-container li {
+    cursor: grab;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+ul#list-container li:active {
+    cursor: grabbing;
+}
+
+ul#list-container li.dragging {
+    opacity: 0.6;
+    transform: scale(1.02);
+    background-color: #f3f3f3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+ul#list-container li.over {
+    border: 2px dashed #d3a200;
+    background-color: #fff8dc;
+}
+
+ul#list-container li:hover {
+    background-color: #f9f9f9;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Responsive */
 @media (max-width: 600px) {
     .todo-app {
         padding: 30px 20px 50px;
@@ -174,6 +245,6 @@ ul li span:hover {
     button {
         width: 100%;
         padding: 12px;
-        font-size: 15
+        font-size: 15px;
     }
 }
